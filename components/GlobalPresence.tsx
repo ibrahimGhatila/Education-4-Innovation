@@ -20,17 +20,13 @@ const cities = [
 
 export default function GlobalPresence() {
   return (
-    <section id="lokasyonlar" className="relative overflow-hidden bg-ink-900 pt-16 text-white sm:pt-20">
+    <section id="lokasyonlar" className="relative overflow-hidden bg-ink-900 pt-12 text-white sm:pt-16">
       <div className="bg-mesh pointer-events-none absolute inset-0 opacity-40" />
       <Rings className="pointer-events-none absolute -left-20 -top-20 h-72 w-72 text-white/10" />
 
       <div className="relative">
         <Reveal className="container-page mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-leaf-300">
-            <Star size={12} className="text-leaf-400" />
-            Küresel Ağ
-          </span>
-          <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             Dünyanın dört bir yanında fırsatlar
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-ink-200">
@@ -39,7 +35,7 @@ export default function GlobalPresence() {
           </p>
         </Reveal>
 
-        <Reveal className="container-page mt-9">
+        <Reveal className="container-page mt-8">
           <ul className="mx-auto grid max-w-5xl grid-cols-3 gap-x-6 gap-y-4 text-center sm:grid-cols-4 lg:grid-cols-6">
             {cities.map((city) => (
               <li
@@ -54,7 +50,7 @@ export default function GlobalPresence() {
         </Reveal>
 
         {/* City skyline silhouette at the bottom of the section */}
-        <div className="relative mt-8 h-[120px] sm:h-[170px]">
+        <div className="relative mt-8 h-[120px] sm:h-[160px]">
           <Skyline className="absolute bottom-0 left-0 h-full w-full text-white" />
         </div>
       </div>
