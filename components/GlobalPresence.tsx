@@ -1,42 +1,29 @@
 import Reveal from "./Reveal";
 import Rings from "./Rings";
 import Star from "./Star";
+import Skyline from "./Skyline";
 
-const row1 = ["San Francisco", "Boston", "New York", "Toronto", "Londra", "Dublin"];
-const row2 = ["Amsterdam", "Berlin", "Milano", "Cenevre", "Dubai", "İstanbul"];
-
-function Marquee({ items, reverse = false }: { items: string[]; reverse?: boolean }) {
-  return (
-    <div className="group relative flex overflow-hidden mask-fade-x">
-      {[0, 1].map((dup) => (
-        <div
-          key={dup}
-          aria-hidden={dup === 1}
-          className={`flex shrink-0 gap-4 pr-4 animate-marquee group-hover:[animation-play-state:paused] ${
-            reverse ? "[animation-direction:reverse]" : ""
-          }`}
-        >
-          {items.map((city) => (
-            <span
-              key={city}
-              className="flex items-center gap-2 whitespace-nowrap rounded-full border border-white/10 bg-white/5 px-6 py-3 text-base font-medium text-white/90 transition-colors hover:border-leaf-400 hover:bg-leaf-500/10 hover:text-white"
-            >
-              <Star size={12} className="text-leaf-400" />
-              {city}
-            </span>
-          ))}
-        </div>
-      ))}
-    </div>
-  );
-}
+const cities = [
+  "San Francisco",
+  "Boston",
+  "New York",
+  "Toronto",
+  "Londra",
+  "Dublin",
+  "Amsterdam",
+  "Berlin",
+  "Milano",
+  "Cenevre",
+  "Dubai",
+  "İstanbul",
+];
 
 export default function GlobalPresence() {
   return (
-    <section id="lokasyonlar" className="relative overflow-hidden bg-ink-900 py-20 text-white sm:py-28">
+    <section id="lokasyonlar" className="relative overflow-hidden bg-ink-900 pt-20 text-white sm:pt-28">
       <div className="bg-mesh pointer-events-none absolute inset-0 opacity-40" />
-      <Rings className="pointer-events-none absolute -left-20 -top-20 h-80 w-80 text-white/15 animate-spin-slow" />
-      <Rings className="pointer-events-none absolute -bottom-24 -right-20 h-96 w-96 text-white/10" count={5} />
+      <Rings className="pointer-events-none absolute -left-20 -top-20 h-80 w-80 text-white/10" />
+      <Rings className="pointer-events-none absolute -bottom-10 right-0 h-96 w-96 text-white/[0.07]" count={5} />
 
       <div className="relative">
         <Reveal className="container-page mx-auto max-w-3xl text-center">
@@ -53,9 +40,23 @@ export default function GlobalPresence() {
           </p>
         </Reveal>
 
-        <div className="mt-12 flex flex-col gap-4">
-          <Marquee items={row1} />
-          <Marquee items={row2} reverse />
+        <Reveal className="container-page mt-12">
+          <ul className="mx-auto grid max-w-4xl grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+            {cities.map((city) => (
+              <li
+                key={city}
+                className="flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-center text-base font-medium text-white/90 transition-colors hover:border-leaf-400/60 hover:bg-white/10"
+              >
+                <Star size={12} className="shrink-0 text-leaf-400" />
+                {city}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+
+        {/* City skyline silhouette at the bottom of the section */}
+        <div className="relative mt-16 h-[180px] sm:h-[240px]">
+          <Skyline className="absolute bottom-0 left-0 h-full w-full text-white" />
         </div>
       </div>
     </section>
