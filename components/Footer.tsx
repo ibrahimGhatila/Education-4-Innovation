@@ -37,7 +37,7 @@ export default function Footer() {
             <ul className="mt-4 space-y-3">
               {footerLinks.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="text-ink-500 transition-colors hover:text-flame-600">
+                  <a href={link.href} className="text-ink-500 transition-colors hover:text-grape-700">
                     {link.label}
                   </a>
                 </li>
@@ -52,12 +52,12 @@ export default function Footer() {
             <ul className="mt-4 space-y-3 text-ink-500">
               <li>Zorlu Center, Teras Evler TE 210, Beşiktaş / İstanbul</li>
               <li>
-                <a href="tel:+905398597866" className="transition-colors hover:text-flame-600">
+                <a href="tel:+905398597866" className="transition-colors hover:text-grape-700">
                   +90 (539) 859 78 66
                 </a>
               </li>
               <li>
-                <a href="mailto:info@educationforinnovation.org" className="transition-colors hover:text-flame-600">
+                <a href="mailto:info@educationforinnovation.org" className="transition-colors hover:text-grape-700">
                   info@educationforinnovation.org
                 </a>
               </li>
@@ -69,7 +69,7 @@ export default function Footer() {
                   href={social.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-full border border-ink-100 px-3.5 py-1.5 text-xs font-medium text-ink-500 transition-colors hover:border-flame-300 hover:text-flame-600"
+                  className="rounded-full border border-ink-100 px-3.5 py-1.5 text-xs font-medium text-ink-500 transition-colors hover:border-grape-300 hover:text-grape-700"
                 >
                   {social.name}
                 </a>

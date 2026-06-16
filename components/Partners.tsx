@@ -20,7 +20,7 @@ export default function Partners() {
               href={partner.url}
               target="_blank"
               rel="noreferrer"
-              className="text-lg font-bold text-ink-300 transition-colors hover:text-flame-600"
+              className="text-lg font-bold text-ink-300 transition-colors hover:text-grape-700"
             >
               {partner.name}
             </a>

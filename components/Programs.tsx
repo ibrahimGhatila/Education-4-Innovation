@@ -57,13 +57,13 @@ export default function Programs() {
               }`}
             >
               <div>
-                <span className="text-xs font-semibold uppercase tracking-wider text-flame-600">
+                <span className="text-xs font-semibold uppercase tracking-wider text-orange-600">
                   {program.tag}
                 </span>
                 <h3 className="mt-3 text-2xl font-bold text-ink-900">{program.name}</h3>
                 <p className="mt-3 leading-relaxed text-ink-500">{program.description}</p>
               </div>
-              <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-flame-600">
+              <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-orange-600">
                 Daha fazla bilgi
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="transition-transform group-hover:translate-x-1">
                   <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

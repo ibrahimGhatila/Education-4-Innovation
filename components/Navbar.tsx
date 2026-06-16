@@ -40,7 +40,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-ink-600 transition-colors hover:text-flame-600"
+              className="text-sm font-medium text-ink-600 transition-colors hover:text-grape-700"
             >
               {link.label}
             </a>
@@ -89,7 +89,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-xl px-3 py-3 text-base font-medium text-ink-700 hover:bg-flame-50 hover:text-flame-600"
+                className="rounded-xl px-3 py-3 text-base font-medium text-ink-700 hover:bg-grape-50 hover:text-grape-700"
               >
                 {link.label}
               </a>

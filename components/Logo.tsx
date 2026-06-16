@@ -4,9 +4,9 @@ type LogoProps = {
 };
 
 /**
- * E4I brand mark — a stylized flame inspired by the foundation's logo,
- * paired with the "e4i" wordmark. Swap the SVG for the official asset
- * (public/e4i-logo.svg) when available.
+ * E4I brand mark — the flame icon recolored to the brand palette
+ * (orange→purple) with a green spark, plus the "e4i" wordmark.
+ * Drop the official asset into /public and swap this for an <img> when available.
  */
 export default function Logo({ className = "", variant = "dark" }: LogoProps) {
   const wordColor = variant === "light" ? "text-white" : "text-ink-900";
@@ -24,9 +24,9 @@ export default function Logo({ className = "", variant = "dark" }: LogoProps) {
       >
         <defs>
           <linearGradient id="flameGrad" x1="12" y1="4" x2="36" y2="46" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#FFB020" />
-            <stop offset="0.5" stopColor="#FF5A1F" />
-            <stop offset="1" stopColor="#F03E0A" />
+            <stop stopColor="#FB7F0D" />
+            <stop offset="0.55" stopColor="#FB7F0D" />
+            <stop offset="1" stopColor="#6F2AA4" />
           </linearGradient>
         </defs>
         <path
@@ -35,13 +35,14 @@ export default function Logo({ className = "", variant = "dark" }: LogoProps) {
         />
         <path
           d="M24.8 24.5c1 3.4-.6 4.9-1.9 6.5-1.3 1.6-2.4 3-2.4 5.4 0 3 2.2 5.2 5 5.2 2.9 0 5-2.3 5-5.4 0-2.6-1.4-4.6-2.7-6.4-.4 1.2-1 1.9-1.8 1.9-.8 0-1.2-.7-1.2-2 0-1.9.9-3.6 0-5.2Z"
-          fill="#FFF4ED"
+          fill="#FFF7EE"
           fillOpacity="0.9"
         />
+        <path d="M40 6c.4 2.6 2 4.4 5 5-3 .6-4.6 2.4-5 5-.4-2.6-2-4.4-5-5 3-.6 4.6-2.4 5-5Z" fill="#7BD32C" />
       </svg>
       <span className={`text-xl font-black tracking-tight ${wordColor}`}>
         e4i
-        <span className="text-flame-500">.</span>
+        <span className="text-leaf-500">.</span>
       </span>
     </span>
   );

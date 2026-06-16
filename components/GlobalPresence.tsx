@@ -19,7 +19,7 @@ export default function GlobalPresence() {
       <div className="bg-mesh pointer-events-none absolute inset-0 opacity-40" />
       <div className="container-page relative">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-flame-300">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-leaf-300">
             Küresel Ağ
           </span>
           <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">
@@ -35,7 +35,7 @@ export default function GlobalPresence() {
           {locations.map((city) => (
             <span
               key={city}
-              className="rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-medium text-white/90 transition-colors hover:border-flame-400 hover:bg-flame-500/10 hover:text-white"
+              className="rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-medium text-white/90 transition-colors hover:border-leaf-400 hover:bg-leaf-500/10 hover:text-white"
             >
               {city}
             </span>

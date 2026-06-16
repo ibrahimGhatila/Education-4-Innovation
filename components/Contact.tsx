@@ -2,7 +2,7 @@ export default function Contact() {
   return (
     <section id="iletisim" className="py-20 sm:py-28">
       <div className="container-page">
-        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-flame-500 via-flame-600 to-flame-700 px-6 py-16 text-white shadow-glow sm:px-12">
+        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-grape-600 via-grape-700 to-orange-600 px-6 py-16 text-white shadow-glow-grape sm:px-12">
           <div className="bg-mesh pointer-events-none absolute inset-0 opacity-30" />
           <div className="relative grid gap-10 lg:grid-cols-2 lg:items-center">
             <div>
@@ -15,7 +15,7 @@ export default function Contact() {
               </p>
               <a
                 href="mailto:info@educationforinnovation.org"
-                className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-flame-700 transition-transform hover:-translate-y-0.5"
+                className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-grape-700 transition-transform hover:-translate-y-0.5"
               >
                 E-posta gönder
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
