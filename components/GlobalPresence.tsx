@@ -26,7 +26,11 @@ export default function GlobalPresence() {
 
       <div className="relative">
         <Reveal className="container-page mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+          <p className="inline-flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-leaf-400">
+            <Star size={12} className="text-leaf-400" />
+            Küresel Ağ
+          </p>
+          <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
             Dünyanın dört bir yanında fırsatlar
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-ink-200">
