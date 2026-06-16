@@ -1,9 +1,14 @@
+import Reveal from "./Reveal";
+import Motif from "./Motif";
+
 export default function Contact() {
   return (
     <section id="iletisim" className="py-20 sm:py-28">
-      <div className="container-page">
-        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-grape-600 via-grape-700 to-orange-600 px-6 py-16 text-white shadow-glow-grape sm:px-12">
+      <Reveal className="container-page" from="scale">
+        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-grape-600 via-berry-600 to-orange-600 bg-[length:200%_200%] px-6 py-16 text-white shadow-glow-grape animate-gradient sm:px-12">
           <div className="bg-mesh pointer-events-none absolute inset-0 opacity-30" />
+          <Motif tone="ghost" className="pointer-events-none absolute -right-10 -top-10 h-56 w-56 opacity-40 animate-spin-slow" />
+          <Motif tone="ghost" stars={false} className="pointer-events-none absolute -bottom-12 left-8 h-36 w-36 opacity-25 animate-float-slow" />
           <div className="relative grid gap-10 lg:grid-cols-2 lg:items-center">
             <div>
               <h2 className="text-3xl font-black leading-tight sm:text-4xl">
@@ -32,7 +37,7 @@ export default function Contact() {
             </div>
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

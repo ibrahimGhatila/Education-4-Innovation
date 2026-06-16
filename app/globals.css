@@ -15,6 +15,7 @@ body {
   background: var(--background);
   color: theme("colors.ink.800");
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 @layer components {
@@ -22,13 +23,12 @@ body {
     @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
   }
 
-  /* Signature brand CTA — purple→orange gradient */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-grape-600 to-orange-500 px-6 py-3 text-sm font-semibold text-white shadow-glow transition-all duration-200 hover:-translate-y-0.5 hover:shadow-glow-grape focus:outline-none focus-visible:ring-2 focus-visible:ring-grape-400 focus-visible:ring-offset-2;
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-grape-600 via-berry-500 to-orange-500 bg-[length:200%_auto] px-6 py-3 text-sm font-semibold text-white shadow-glow transition-all duration-300 hover:-translate-y-0.5 hover:bg-right hover:shadow-glow-grape focus:outline-none focus-visible:ring-2 focus-visible:ring-grape-400 focus-visible:ring-offset-2;
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink-200 bg-white px-6 py-3 text-sm font-semibold text-ink-800 transition-all duration-200 hover:-translate-y-0.5 hover:border-grape-300 hover:text-grape-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-grape-400 focus-visible:ring-offset-2;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink-200 bg-white/70 px-6 py-3 text-sm font-semibold text-ink-800 backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:border-grape-300 hover:text-grape-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-grape-400 focus-visible:ring-offset-2;
   }
 
   .eyebrow {
@@ -42,14 +42,37 @@ body {
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-grape-600 via-orange-500 to-orange-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-grape-600 via-berry-500 to-orange-500 bg-clip-text text-transparent;
   }
 
-  /* Vibrant tri-color brand mesh — green, purple, orange */
+  .text-gradient-anim {
+    @apply bg-gradient-to-r from-grape-600 via-berry-500 to-orange-500 bg-[length:200%_auto] bg-clip-text text-transparent;
+    animation: gradient 7s ease infinite;
+  }
+
+  /* Tri-color brand mesh — purple, orange, green */
   .bg-mesh {
     background-image:
       radial-gradient(55% 55% at 12% 8%, rgba(111, 42, 164, 0.16) 0%, transparent 60%),
       radial-gradient(50% 50% at 90% 4%, rgba(251, 127, 13, 0.16) 0%, transparent 58%),
-      radial-gradient(55% 55% at 82% 92%, rgba(123, 211, 44, 0.14) 0%, transparent 60%);
+      radial-gradient(55% 55% at 82% 92%, rgba(123, 211, 44, 0.16) 0%, transparent 60%),
+      radial-gradient(40% 40% at 50% 60%, rgba(138, 30, 60, 0.10) 0%, transparent 60%);
+  }
+
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  }
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
