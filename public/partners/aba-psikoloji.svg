@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 90" width="320" height="90">
+  <circle cx="36" cy="45" r="27" fill="#63B31E"/>
+  <text x="36" y="56" text-anchor="middle" font-family="Roboto, system-ui, sans-serif" font-size="30" font-weight="800" fill="#ffffff">a</text>
+  <text x="80" y="42" font-family="Roboto, system-ui, sans-serif" font-size="27" font-weight="800" fill="#283450">aba</text>
+  <text x="80" y="67" font-family="Roboto, system-ui, sans-serif" font-size="15" font-weight="600" fill="#6B7CA3">Psikoloji</text>
+</svg>

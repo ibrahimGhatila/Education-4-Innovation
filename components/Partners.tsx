@@ -1,11 +1,11 @@
 import Reveal from "./Reveal";
 
 const partners = [
-  { name: "aba Yurt Dışı Eğitim", url: "https://abaegitim.com/" },
-  { name: "aba Psikoloji", url: "https://abapsikoloji.com/" },
-  { name: "aba Med Edu & AI", url: "https://abamededu.ai/" },
-  { name: "aba Tests Prep", url: "https://abatestsprep.com/" },
-  { name: "Design House Istanbul", url: "https://designhouseist.com/" },
+  { name: "aba Yurt Dışı Eğitim", url: "https://abaegitim.com/", logo: "/partners/aba-egitim.svg" },
+  { name: "aba Psikoloji", url: "https://abapsikoloji.com/", logo: "/partners/aba-psikoloji.svg" },
+  { name: "aba Med Edu & AI", url: "https://abamededu.ai/", logo: "/partners/aba-mededu.svg" },
+  { name: "aba Tests Prep", url: "https://abatestsprep.com/", logo: "/partners/aba-tests.svg" },
+  { name: "Design House Istanbul", url: "https://designhouseist.com/", logo: "/partners/design-house.svg" },
 ];
 
 export default function Partners() {
@@ -17,16 +17,22 @@ export default function Partners() {
             İş Ortaklarımız
           </p>
         </Reveal>
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
           {partners.map((partner, i) => (
             <Reveal key={partner.name} delay={i * 80} from="up">
               <a
                 href={partner.url}
                 target="_blank"
                 rel="noreferrer"
-                className="text-lg font-bold text-ink-300 transition-all duration-300 hover:-translate-y-0.5 hover:text-grape-700"
+                title={partner.name}
+                className="block"
               >
-                {partner.name}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  className="h-12 w-auto opacity-70 grayscale transition duration-300 hover:-translate-y-0.5 hover:opacity-100 hover:grayscale-0 sm:h-14"
+                />
               </a>
             </Reveal>
           ))}
