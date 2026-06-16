@@ -3,13 +3,14 @@ type SkylineProps = {
 };
 
 /**
- * World-city skyline silhouette with recognizable landmarks, left→right:
- * Golden Gate Bridge · Statue of Liberty · Empire State · London Eye ·
- * Big Ben · Duomo di Milano · Istanbul mosque + minarets · Galata Tower ·
+ * Layered world-city skyline. Two dense building ridges (far + mid) give
+ * depth, with recognizable landmarks rising from the foreground:
+ * Golden Gate · Statue of Liberty · Empire State · London Eye · Big Ben ·
+ * Duomo di Milano · Istanbul mosque + minarets · Galata Tower ·
  * Brandenburg Gate · Burj Khalifa · Berlin TV Tower · Amsterdam gables.
  *
- * A very faint brand-colour shimmer drifts across the silhouette (masked to
- * the city shape) for a subtle, minimal glow.
+ * A single, smooth, very faint brand-colour wash (one of each colour, no
+ * repeat) drifts gently across the silhouette, masked to the city shape.
  */
 export default function Skyline({ className = "" }: SkylineProps) {
   return (
@@ -21,33 +22,53 @@ export default function Skyline({ className = "" }: SkylineProps) {
       className={className}
     >
       <defs>
-        <linearGradient id="skyFill" x1="0" y1="70" x2="0" y2="300" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="#ffffff" stopOpacity="0.15" />
-          <stop offset="1" stopColor="#ffffff" stopOpacity="0.04" />
+        <linearGradient id="skyFill" x1="0" y1="60" x2="0" y2="300" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#ffffff" stopOpacity="0.16" />
+          <stop offset="1" stopColor="#ffffff" stopOpacity="0.05" />
+        </linearGradient>
+        <linearGradient id="skyFillMid" x1="0" y1="180" x2="0" y2="300" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#ffffff" stopOpacity="0.09" />
+          <stop offset="1" stopColor="#ffffff" stopOpacity="0.03" />
         </linearGradient>
         <linearGradient id="skyFillBack" x1="0" y1="230" x2="0" y2="300" gradientUnits="userSpaceOnUse">
           <stop offset="0" stopColor="#ffffff" stopOpacity="0.05" />
           <stop offset="1" stopColor="#ffffff" stopOpacity="0.015" />
         </linearGradient>
 
-        {/* Drifting brand-colour shimmer bands (kept very faint) */}
-        <linearGradient id="skyShimmerA" x1="0" y1="0" x2="700" y2="0" gradientUnits="userSpaceOnUse" spreadMethod="repeat">
-          <stop offset="0.00" stopColor="#6F2AA4" stopOpacity="0" />
-          <stop offset="0.14" stopColor="#6F2AA4" stopOpacity="0.5" />
-          <stop offset="0.28" stopColor="#FB7F0D" stopOpacity="0.5" />
-          <stop offset="0.42" stopColor="#7BD32C" stopOpacity="0.45" />
-          <stop offset="0.56" stopColor="#6F2AA4" stopOpacity="0" />
-          <stop offset="1.00" stopColor="#6F2AA4" stopOpacity="0" />
-          <animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="700 0" dur="22s" repeatCount="indefinite" />
+        {/* Single smooth brand wash — one of each colour, no repeat */}
+        <linearGradient id="skyShimmer" x1="0" y1="0" x2="1600" y2="0" gradientUnits="userSpaceOnUse">
+          <stop offset="0.00" stopColor="#7BD32C" stopOpacity="0.5" />
+          <stop offset="0.34" stopColor="#6F2AA4" stopOpacity="0.55" />
+          <stop offset="0.66" stopColor="#8A1E3C" stopOpacity="0.5" />
+          <stop offset="1.00" stopColor="#FB7F0D" stopOpacity="0.55" />
+          <animateTransform
+            attributeName="gradientTransform"
+            type="translate"
+            values="-90 0; 90 0; -90 0"
+            keyTimes="0; 0.5; 1"
+            dur="26s"
+            repeatCount="indefinite"
+          />
         </linearGradient>
         <filter id="skySoft" x="-10%" y="-30%" width="120%" height="160%">
-          <feGaussianBlur stdDeviation="7" />
+          <feGaussianBlur stdDeviation="8" />
         </filter>
 
-        {/* All building + landmark masses, defined once for reuse */}
-        <g id="cityShapes">
-          {/* low connector buildings */}
-          <path d="M0 300 V252 H58 V300 Z M58 300 V230 H96 V300 Z M340 300 V248 H392 V300 Z M392 300 V224 H432 V300 Z M566 300 V206 H592 V300 Z M598 300 V178 H626 V300 Z M632 300 V236 H662 V300 Z M730 300 V232 H760 V300 Z M800 300 V214 H842 V300 Z M842 300 V244 H878 V300 Z M1002 300 V238 H1040 V300 Z M1214 300 V240 H1250 V300 Z M1382 300 V236 H1410 V300 Z M1440 300 V250 H1462 V300 Z M1572 300 V252 H1600 V300 Z" />
+        {/* Far ridge — dense distant buildings */}
+        <path
+          id="cityBack"
+          d="M0 300 V256 H34 V268 H70 V250 H104 V262 H150 V246 H196 V260 H240 V250 H300 V264 H348 V252 H400 V244 H452 V262 H500 V250 H560 V258 H620 V246 H680 V262 H740 V252 H800 V260 H860 V248 H920 V262 H980 V252 H1040 V260 H1100 V246 H1160 V262 H1220 V250 H1280 V260 H1340 V248 H1400 V262 H1460 V252 H1520 V260 H1600 V300 Z"
+        />
+        {/* Mid ridge — taller, denser buildings */}
+        <path
+          id="cityMid"
+          d="M0 300 V236 H30 V214 H56 V240 H92 V202 H120 V232 H150 V192 H180 V228 H214 V208 H250 V236 H288 V212 H320 V232 H360 V202 H402 V230 H440 V212 H486 V236 H520 V208 H560 V230 H600 V216 H650 V234 H700 V208 H742 V230 H792 V218 H840 V234 H892 V206 H952 V232 H1004 V212 H1050 V232 H1108 V208 H1160 V232 H1212 V214 H1262 V234 H1320 V212 H1372 V232 H1430 V216 H1486 V234 H1540 V220 H1600 V300 Z"
+        />
+
+        {/* Foreground buildings + landmarks */}
+        <g id="cityFront">
+          {/* foreground filler blocks with rooftop bits */}
+          <path d="M70 300 V196 H104 V300 Z M98 196 V186 H108 V196 Z M210 300 V168 H236 V300 Z M232 168 V150 H236 V168 Z M610 300 V190 H642 V300 Z M1230 300 V184 H1264 V300 Z M1258 184 V168 H1262 V184 Z M1470 300 V200 H1500 V300 Z" />
 
           {/* Golden Gate Bridge towers */}
           <path d="M150 300 V118 H164 V300 Z M300 300 V118 H314 V300 Z" />
@@ -80,41 +101,36 @@ export default function Skyline({ className = "" }: SkylineProps) {
           <path d="M1180 300 V178 H1202 V300 Z M1177 178 L1191 150 L1205 178 Z M1176 174 H1206 V169 H1176 Z" />
 
           {/* Brandenburg Gate */}
-          <path d="M1256 300 V176 H1330 V300 Z M1252 176 H1334 V162 H1252 Z M1282 162 V150 H1304 V162 Z" />
+          <path d="M1330 300 V184 H1404 V300 Z M1326 184 H1408 V170 H1326 Z M1356 170 V158 H1378 V170 Z" />
 
           {/* Burj Khalifa */}
-          <path d="M1344 300 L1352 120 L1357 78 L1361 44 L1365 78 L1370 120 L1378 300 Z" />
+          <path d="M1418 300 L1426 120 L1431 78 L1435 44 L1439 78 L1444 120 L1452 300 Z" />
 
           {/* Berlin TV Tower */}
-          <path d="M1424 300 V128 H1432 V300 Z M1426 106 V70 H1430 V106 Z" />
-          <circle cx="1428" cy="118" r="12" />
+          <path d="M1500 300 V128 H1508 V300 Z M1502 106 V70 H1506 V106 Z" />
+          <circle cx="1504" cy="118" r="12" />
 
           {/* Amsterdam canal houses */}
-          <path d="M1466 300 V238 H1492 V300 Z M1466 238 Q1479 216 1492 238 Z M1494 300 V230 H1518 V300 Z M1494 230 H1502 V222 H1510 V214 H1518 V230 Z M1520 300 V242 H1544 V300 Z M1520 242 L1532 224 L1544 242 Z M1546 300 V234 H1572 V300 Z M1546 234 Q1559 214 1572 234 Z" />
+          <path d="M1538 300 V238 H1562 V300 Z M1538 238 Q1550 218 1562 238 Z M1564 300 V232 H1586 V300 Z M1564 232 L1575 214 L1586 232 Z M1588 300 V240 H1610 V300 Z M1588 240 Q1599 222 1610 240 Z" />
         </g>
 
         <mask id="cityMask">
-          <use href="#cityShapes" fill="#ffffff" />
+          <use href="#cityMid" fill="#ffffff" fillOpacity="0.6" />
+          <use href="#cityFront" fill="#ffffff" />
         </mask>
       </defs>
 
-      {/* Distant back ridge for depth */}
-      <path
-        fill="url(#skyFillBack)"
-        d="M0 300 V262 H120 V248 H240 V268 H360 V256 H520 V244 H660 V262 H820 V250 H980 V266 H1140 V252 H1300 V262 H1440 V250 H1600 V300 Z"
-      />
+      <use href="#cityBack" fill="url(#skyFillBack)" />
+      <use href="#cityMid" fill="url(#skyFillMid)" />
+      <use href="#cityFront" fill="url(#skyFill)" />
 
-      {/* Main silhouette */}
-      <use href="#cityShapes" fill="url(#skyFill)" />
-
-      {/* Extremely faint brand-colour shimmer, clipped to the skyline */}
-      <g mask="url(#cityMask)" opacity="0.2" filter="url(#skySoft)">
-        <rect x="0" y="0" width="1600" height="300" fill="url(#skyShimmerA)" />
+      {/* Very faint, smooth brand wash, clipped to the city */}
+      <g mask="url(#cityMask)" opacity="0.12" filter="url(#skySoft)">
+        <rect x="0" y="0" width="1600" height="300" fill="url(#skyShimmer)" />
       </g>
 
       {/* Fine details: cables, antennas, wheel, finials */}
-      <g stroke="currentColor" strokeOpacity="0.16" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round">
-        {/* Golden Gate */}
+      <g stroke="currentColor" strokeOpacity="0.15" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round">
         <line x1="28" y1="236" x2="352" y2="236" />
         <line x1="150" y1="150" x2="164" y2="150" />
         <line x1="150" y1="188" x2="164" y2="188" />
@@ -125,11 +141,8 @@ export default function Skyline({ className = "" }: SkylineProps) {
         <line x1="222" y1="176" x2="222" y2="236" />
         <line x1="252" y1="184" x2="252" y2="236" />
         <line x1="282" y1="160" x2="282" y2="236" />
-        {/* Statue crown */}
         <path d="M458 169 l-4 -6 M462 166 l-1 -7 M466 166 l1 -7 M470 169 l4 -6" />
-        {/* Empire antenna */}
         <line x1="529" y1="74" x2="529" y2="46" />
-        {/* London Eye */}
         <circle cx="691" cy="150" r="46" />
         <circle cx="691" cy="150" r="39" />
         <circle cx="691" cy="150" r="3.5" fill="currentColor" />
@@ -137,18 +150,13 @@ export default function Skyline({ className = "" }: SkylineProps) {
         <path d="M672 186 L691 150 L710 186" />
         <line x1="672" y1="186" x2="668" y2="288" />
         <line x1="710" y1="186" x2="714" y2="288" />
-        {/* Big Ben */}
         <circle cx="779" cy="150" r="8.5" />
         <line x1="779" y1="74" x2="779" y2="62" />
-        {/* Minaret finials */}
         <line x1="1054" y1="108" x2="1054" y2="98" />
         <line x1="1156" y1="108" x2="1156" y2="98" />
-        {/* Brandenburg columns */}
-        <path d="M1266 300 V178 M1280 300 V178 M1294 300 V178 M1308 300 V178 M1322 300 V178" />
-        {/* Burj antenna */}
-        <line x1="1361" y1="44" x2="1361" y2="20" />
-        {/* Berlin antenna */}
-        <line x1="1428" y1="70" x2="1428" y2="44" />
+        <path d="M1336 300 V186 M1350 300 V186 M1364 300 V186 M1378 300 V186 M1392 300 V186" />
+        <line x1="1435" y1="44" x2="1435" y2="20" />
+        <line x1="1504" y1="70" x2="1504" y2="44" />
       </g>
     </svg>
   );
