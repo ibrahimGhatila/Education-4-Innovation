@@ -50,8 +50,8 @@ export default function GlobalPresence() {
         </Reveal>
 
         {/* City skyline silhouette at the bottom of the section */}
-        <div className="relative mt-8 h-[120px] sm:h-[160px]">
-          <Skyline className="absolute bottom-0 left-0 h-full w-full text-white" />
+        <div className="mt-10">
+          <Skyline className="block h-auto w-full text-white" />
         </div>
       </div>
     </section>

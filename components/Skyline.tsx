@@ -15,9 +15,8 @@ type SkylineProps = {
 export default function Skyline({ className = "" }: SkylineProps) {
   return (
     <svg
-      viewBox="0 0 1600 300"
+      viewBox="0 40 1600 260"
       fill="none"
-      preserveAspectRatio="xMidYMax slice"
       aria-hidden="true"
       className={className}
     >
@@ -37,10 +36,10 @@ export default function Skyline({ className = "" }: SkylineProps) {
 
         {/* Single smooth brand wash — one of each colour, no repeat */}
         <linearGradient id="skyShimmer" x1="0" y1="0" x2="1600" y2="0" gradientUnits="userSpaceOnUse">
-          <stop offset="0.00" stopColor="#7BD32C" stopOpacity="0.5" />
-          <stop offset="0.34" stopColor="#6F2AA4" stopOpacity="0.55" />
-          <stop offset="0.66" stopColor="#8A1E3C" stopOpacity="0.5" />
-          <stop offset="1.00" stopColor="#FB7F0D" stopOpacity="0.55" />
+          <stop offset="0.00" stopColor="#7BD32C" stopOpacity="0.7" />
+          <stop offset="0.34" stopColor="#6F2AA4" stopOpacity="0.75" />
+          <stop offset="0.66" stopColor="#8A1E3C" stopOpacity="0.7" />
+          <stop offset="1.00" stopColor="#FB7F0D" stopOpacity="0.75" />
           <animateTransform
             attributeName="gradientTransform"
             type="translate"
@@ -51,7 +50,7 @@ export default function Skyline({ className = "" }: SkylineProps) {
           />
         </linearGradient>
         <filter id="skySoft" x="-10%" y="-30%" width="120%" height="160%">
-          <feGaussianBlur stdDeviation="8" />
+          <feGaussianBlur stdDeviation="6" />
         </filter>
 
         {/* Far ridge — dense distant buildings */}
@@ -125,7 +124,7 @@ export default function Skyline({ className = "" }: SkylineProps) {
       <use href="#cityFront" fill="url(#skyFill)" />
 
       {/* Very faint, smooth brand wash, clipped to the city */}
-      <g mask="url(#cityMask)" opacity="0.12" filter="url(#skySoft)">
+      <g mask="url(#cityMask)" opacity="0.25" filter="url(#skySoft)">
         <rect x="0" y="0" width="1600" height="300" fill="url(#skyShimmer)" />
       </g>
 
@@ -155,7 +154,6 @@ export default function Skyline({ className = "" }: SkylineProps) {
         <line x1="1054" y1="108" x2="1054" y2="98" />
         <line x1="1156" y1="108" x2="1156" y2="98" />
         <path d="M1336 300 V186 M1350 300 V186 M1364 300 V186 M1378 300 V186 M1392 300 V186" />
-        <line x1="1435" y1="44" x2="1435" y2="20" />
         <line x1="1504" y1="70" x2="1504" y2="44" />
       </g>
     </svg>
