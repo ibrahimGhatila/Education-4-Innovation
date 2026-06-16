@@ -1,5 +1,5 @@
 import Reveal from "./Reveal";
-import Motif from "./Motif";
+import Rings from "./Rings";
 import Star from "./Star";
 
 const posts = [
@@ -25,10 +25,7 @@ export default function Blog() {
             <Reveal key={post.title} delay={i * 110} from="up" className="h-full">
               <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-ink-100 bg-white shadow-soft transition-all duration-300 hover:-translate-y-2 hover:shadow-lift">
                 <div className={`relative flex aspect-[16/10] items-center justify-center overflow-hidden ${post.bg}`}>
-                  <Motif
-                    tone="ghost"
-                    className="absolute -right-6 -top-6 h-32 w-32 transition-transform duration-700 group-hover:rotate-45 group-hover:scale-110"
-                  />
+                  <Rings className="absolute -right-10 -top-10 h-40 w-40 text-white/25 transition-transform duration-700 group-hover:scale-110" />
                   <Star className="text-white/90 transition-transform duration-500 group-hover:scale-125" size={40} />
                 </div>
                 <div className="flex flex-1 flex-col p-6">

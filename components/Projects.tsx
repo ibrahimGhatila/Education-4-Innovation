@@ -1,15 +1,68 @@
-import Reveal from "./Reveal";
-import Motif from "./Motif";
+"use client";
 
-const projects = [
-  { name: "Projeler", description: "Öğrenci ve toplum odaklı, etki yaratan inovasyon projeleri.", ring: "group-hover:bg-grape-500" },
-  { name: "Sosyal Sorumluluk", description: "Eğitimde fırsat eşitliğini destekleyen sosyal sorumluluk girişimleri.", ring: "group-hover:bg-leaf-600" },
-  { name: "Startup Projeleri", description: "Fikirden şirkete; genç girişimcilere mentorluk ve kuluçka desteği.", ring: "group-hover:bg-orange-500" },
-  { name: "Sponsorluk", description: "Etkinlik ve programlarımıza güç katan kurumsal iş birlikleri.", ring: "group-hover:bg-berry-500" },
-  { name: "Burslar", description: "Yetenekli öğrencilerin önündeki engelleri kaldıran burs olanakları.", ring: "group-hover:bg-grape-600" },
+import { useState } from "react";
+import Reveal from "./Reveal";
+import Rings from "./Rings";
+import Star from "./Star";
+
+type Project = {
+  name: string;
+  tag: string;
+  description: string;
+  image: string;
+  accent: string; // text color for the eyebrow/number
+};
+
+const projects: Project[] = [
+  {
+    name: "Projeler",
+    tag: "Etki Odaklı",
+    description:
+      "Öğrenci ve toplum odaklı, somut etki yaratan inovasyon projeleri yürütüyoruz. Fikir aşamasından uygulamaya kadar her adımda mentorluk ve kaynak sağlıyoruz.",
+    image: "/projects/projeler.svg",
+    accent: "text-grape-600",
+  },
+  {
+    name: "Sosyal Sorumluluk",
+    tag: "Toplum",
+    description:
+      "Eğitimde fırsat eşitliğini destekleyen sosyal sorumluluk girişimleriyle, farklı arka planlardan gelen öğrencilerin geleceğe eşit koşullarda hazırlanmasını sağlıyoruz.",
+    image: "/projects/sosyal-sorumluluk.svg",
+    accent: "text-leaf-600",
+  },
+  {
+    name: "Startup Projeleri",
+    tag: "Girişimcilik",
+    description:
+      "Fikirden şirkete uzanan yolda genç girişimcilere mentorluk, kuluçka ve yatırımcı ağı desteği sunuyoruz. İnovasyonu sürdürülebilir bir işe dönüştürüyoruz.",
+    image: "/projects/startup-projeleri.svg",
+    accent: "text-orange-600",
+  },
+  {
+    name: "Sponsorluk",
+    tag: "İş Birliği",
+    description:
+      "Etkinlik ve programlarımıza güç katan kurumsal iş birlikleriyle, daha fazla öğrenciye ulaşıyor ve geleceğin yeteneklerine yatırım yapan markalarla buluşuyoruz.",
+    image: "/projects/sponsorluk.svg",
+    accent: "text-berry-500",
+  },
+  {
+    name: "Burslar",
+    tag: "Destek",
+    description:
+      "Yetenekli öğrencilerin önündeki finansal engelleri kaldıran burs olanaklarıyla, başarının maddi koşullardan bağımsız olmasını hedefliyoruz.",
+    image: "/projects/burslar.svg",
+    accent: "text-grape-700",
+  },
 ];
 
 export default function Projects() {
+  const [index, setIndex] = useState(0);
+  const project = projects[index];
+  const total = projects.length;
+
+  const go = (dir: number) => setIndex((i) => (i + dir + total) % total);
+
   return (
     <section id="projeler" className="py-20 sm:py-28">
       <div className="container-page">
@@ -17,45 +70,85 @@ export default function Projects() {
           <span className="eyebrow">Projelerimiz</span>
           <h2 className="section-title mt-5">İz bırakan girişimler</h2>
           <p className="mt-5 text-lg leading-relaxed text-ink-500">
-            Sosyal sorumluluktan startup desteğine, burslardan sponsorluklara kadar
-            geleceğe yatırım yapan projeler yürütüyoruz.
+            Her projeyi yakından tanıyın: sosyal sorumluluktan startup desteğine,
+            burslardan sponsorluklara kadar geleceğe yatırım yapıyoruz.
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, i) => (
-            <Reveal key={project.name} delay={i * 90} from="scale" className="h-full">
-              <div className="group h-full rounded-3xl border border-ink-100 bg-white p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-ink-200 hover:shadow-lift">
-                <div className="flex items-center gap-4">
-                  <div className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-ink-50 transition-colors duration-300 ${project.ring}`}>
-                    <Motif className="h-9 w-9 transition-all duration-500 group-hover:rotate-12 group-hover:[filter:brightness(0)_invert(1)]" />
-                  </div>
-                  <span className="text-4xl font-black text-ink-100 transition-colors group-hover:text-ink-200">
-                    {String(i + 1).padStart(2, "0")}
+        <Reveal from="scale" className="mt-14">
+          <div className="grid items-stretch gap-px overflow-hidden rounded-[1.75rem] border border-ink-100 bg-ink-100 shadow-lift lg:grid-cols-2">
+            {/* Text side */}
+            <div className="flex flex-col justify-between bg-white p-8 sm:p-10">
+              <div key={`t-${index}`} className="animate-fade-up">
+                <div className="flex items-center gap-3">
+                  <span className={`text-sm font-bold ${project.accent}`}>
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="h-px w-8 bg-ink-200" />
+                  <span className="text-xs font-semibold uppercase tracking-wider text-ink-400">
+                    {project.tag}
                   </span>
                 </div>
-                <h3 className="mt-6 text-xl font-bold text-ink-900">{project.name}</h3>
-                <p className="mt-2 leading-relaxed text-ink-500">{project.description}</p>
+                <h3 className="mt-5 text-3xl font-black text-ink-900 sm:text-4xl">{project.name}</h3>
+                <p className="mt-4 text-lg leading-relaxed text-ink-600">{project.description}</p>
               </div>
-            </Reveal>
-          ))}
 
-          <Reveal delay={projects.length * 90} from="scale" className="h-full">
-            <div className="relative flex h-full flex-col justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-ink-800 to-ink-900 p-8 text-white">
-              <Motif tone="ghost" className="absolute -right-6 -top-6 h-40 w-40 animate-spin-slow" />
-              <h3 className="relative text-xl font-bold">Birlikte üretelim</h3>
-              <p className="relative mt-2 text-ink-200">
-                Projelerimize katılmak veya destek olmak ister misiniz?
-              </p>
-              <a href="#iletisim" className="relative mt-5 inline-flex items-center gap-2 text-sm font-semibold text-leaf-300 hover:text-leaf-200">
-                İletişime geç
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </a>
+              {/* Controls */}
+              <div className="mt-10 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => go(-1)}
+                    aria-label="Önceki proje"
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-ink-200 text-ink-700 transition-all hover:-translate-x-0.5 hover:border-grape-400 hover:bg-grape-50 hover:text-grape-700"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M19 12H5m6 6-6-6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => go(1)}
+                    aria-label="Sonraki proje"
+                    className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-grape-600 to-orange-500 text-white shadow-glow transition-all hover:translate-x-0.5"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  {projects.map((p, i) => (
+                    <button
+                      key={p.name}
+                      type="button"
+                      onClick={() => setIndex(i)}
+                      aria-label={`${p.name} projesine git`}
+                      aria-current={i === index}
+                      className={`h-2 rounded-full transition-all duration-300 ${
+                        i === index ? "w-7 bg-grape-600" : "w-2 bg-ink-200 hover:bg-ink-300"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
-          </Reveal>
-        </div>
+
+            {/* Image side */}
+            <div className="relative min-h-[18rem] overflow-hidden bg-ink-900 lg:min-h-[26rem]">
+              <Rings className="pointer-events-none absolute -right-16 -top-16 z-10 h-56 w-56 text-white/20" />
+              <Star className="absolute right-8 top-8 z-10 text-white/70 animate-twinkle" size={18} />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                key={`i-${index}`}
+                src={project.image}
+                alt={`${project.name} görseli`}
+                className="h-full w-full animate-fade-up object-cover"
+              />
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

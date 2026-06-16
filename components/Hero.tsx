@@ -1,13 +1,13 @@
 import Star from "./Star";
-import Motif from "./Motif";
+import Rings from "./Rings";
+import Logo from "./Logo";
 import Counter from "./Counter";
 
 export default function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-mesh pt-32 pb-20 sm:pt-40 sm:pb-28">
-      {/* Floating brand motifs */}
-      <Motif className="pointer-events-none absolute -left-16 top-24 h-56 w-56 opacity-20 blur-[1px] animate-float-slow" stars={false} />
-      <Motif className="pointer-events-none absolute -right-10 bottom-0 h-44 w-44 opacity-15 animate-float" stars={false} />
+      <Rings className="pointer-events-none absolute -left-24 top-16 h-80 w-80 text-grape-300/50 animate-spin-slow" />
+      <Rings className="pointer-events-none absolute -right-20 bottom-0 h-72 w-72 text-orange-300/50" count={3} />
       <Star className="absolute left-[8%] top-36 text-leaf-400/70 animate-twinkle" size={22} />
       <Star className="absolute right-[14%] top-44 text-grape-400/60 animate-twinkle [animation-delay:1s]" size={16} />
       <Star className="absolute left-[22%] bottom-20 text-orange-400/60 animate-twinkle [animation-delay:2s]" size={18} />
@@ -60,12 +60,13 @@ export default function Hero() {
             <div className="absolute inset-0 rotate-3 rounded-[2rem] bg-gradient-to-br from-leaf-400 via-grape-500 to-orange-500 bg-[length:200%_200%] shadow-glow animate-gradient" />
             <div className="absolute inset-0 -rotate-2 rounded-[2rem] border border-white/60 bg-white/60 backdrop-blur-sm" />
             <div className="absolute inset-0 flex flex-col justify-between overflow-hidden rounded-[2rem] bg-ink-900 p-8 text-white shadow-soft">
-              <Motif className="absolute -right-10 -top-10 h-48 w-48 opacity-90 animate-spin-slow" />
-              <Star className="absolute bottom-24 left-6 text-leaf-300/80 animate-twinkle" size={20} />
+              <Rings className="absolute -right-12 -top-12 h-56 w-56 text-white/15 animate-spin-slow" />
+              <Star className="absolute bottom-28 left-8 text-leaf-300/80 animate-twinkle" size={20} />
               <div className="relative flex items-center justify-between">
                 <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-leaf-300">
                   Vizyon
                 </span>
+                <Logo variant="light" showText={false} className="opacity-90" />
               </div>
               <div className="relative">
                 <p className="text-2xl font-bold leading-snug">

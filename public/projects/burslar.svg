@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 750" width="1000" height="750" role="img" aria-label="Burslar — görsel yakında">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6F2AA4"/>
+      <stop offset="0.5" stop-color="#A23A6A"/>
+      <stop offset="1" stop-color="#FB7F0D"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="750" fill="url(#g)"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.16" stroke-width="2">
+    <circle cx="830" cy="150" r="70"/><circle cx="830" cy="150" r="130"/><circle cx="830" cy="150" r="190"/><circle cx="830" cy="150" r="250"/>
+  </g>
+  <g fill="#ffffff" opacity="0.85">
+    <path d="M150 120 c3 13 5 15 18 18 -13 3 -15 5 -18 18 -3 -13 -5 -15 -18 -18 13 -3 15 -5 18 -18Z"/>
+    <path d="M250 220 c2 9 4 11 13 13 -9 2 -11 4 -13 13 -2 -9 -4 -11 -13 -13 9 -2 11 -4 13 -13Z"/>
+    <path d="M120 560 c2 9 4 11 13 13 -9 2 -11 4 -13 13 -2 -9 -4 -11 -13 -13 9 -2 11 -4 13 -13Z"/>
+  </g>
+  <g transform="translate(500 320)" fill="none" stroke="#ffffff" stroke-width="9" stroke-linejoin="round" opacity="0.92">
+    <rect x="-130" y="-95" width="260" height="190" rx="22"/>
+    <circle cx="-58" cy="-30" r="24" fill="#ffffff" stroke="none"/>
+    <path d="M-130 75 L-35 -12 L25 45 L70 5 L130 75" stroke-linecap="round"/>
+  </g>
+  <text x="500" y="500" text-anchor="middle" fill="#ffffff" font-family="Roboto, system-ui, sans-serif" font-size="62" font-weight="800">Burslar</text>
+  <text x="500" y="560" text-anchor="middle" fill="#ffffff" fill-opacity="0.75" font-family="Roboto, system-ui, sans-serif" font-size="30" font-weight="500" letter-spacing="2">GÖRSEL YAKINDA</text>
+</svg>

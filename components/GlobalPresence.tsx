@@ -1,5 +1,5 @@
 import Reveal from "./Reveal";
-import Motif from "./Motif";
+import Rings from "./Rings";
 import Star from "./Star";
 
 const row1 = ["San Francisco", "Boston", "New York", "Toronto", "Londra", "Dublin"];
@@ -35,8 +35,8 @@ export default function GlobalPresence() {
   return (
     <section id="lokasyonlar" className="relative overflow-hidden bg-ink-900 py-20 text-white sm:py-28">
       <div className="bg-mesh pointer-events-none absolute inset-0 opacity-40" />
-      <Motif tone="ghost" className="pointer-events-none absolute -left-16 -top-16 h-64 w-64 opacity-30 animate-spin-slow" />
-      <Motif tone="ghost" className="pointer-events-none absolute -bottom-20 -right-16 h-72 w-72 opacity-20 animate-float-slow" />
+      <Rings className="pointer-events-none absolute -left-20 -top-20 h-80 w-80 text-white/15 animate-spin-slow" />
+      <Rings className="pointer-events-none absolute -bottom-24 -right-20 h-96 w-96 text-white/10" count={5} />
 
       <div className="relative">
         <Reveal className="container-page mx-auto max-w-3xl text-center">
