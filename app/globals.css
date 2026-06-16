@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--background);
+  color: theme("colors.ink.900");
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-flame-500 px-6 py-3 text-sm font-semibold text-white shadow-glow transition-all duration-200 hover:-translate-y-0.5 hover:bg-flame-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-flame-400 focus-visible:ring-offset-2;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink-200 bg-white px-6 py-3 text-sm font-semibold text-ink-900 transition-all duration-200 hover:-translate-y-0.5 hover:border-flame-300 hover:text-flame-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-flame-400 focus-visible:ring-offset-2;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-flame-200 bg-flame-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-flame-700;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-flame-500 via-flame-600 to-flame-400 bg-clip-text text-transparent;
+  }
+
+  .bg-mesh {
+    background-image:
+      radial-gradient(60% 60% at 15% 10%, rgba(255, 116, 56, 0.18) 0%, transparent 60%),
+      radial-gradient(50% 50% at 90% 0%, rgba(255, 176, 32, 0.16) 0%, transparent 55%),
+      radial-gradient(55% 55% at 80% 90%, rgba(255, 90, 31, 0.12) 0%, transparent 60%);
+  }
+}
