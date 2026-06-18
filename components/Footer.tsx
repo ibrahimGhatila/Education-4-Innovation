@@ -31,7 +31,7 @@ export default function Footer() {
       <div className="container-page relative py-16">
         <div className="grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
           <div>
-            <Logo variant="light" />
+            <Logo chip />
             <p className="mt-6 max-w-sm text-lg font-medium leading-relaxed text-white/90">
               Öğrencileri ve aileleri geleceğe hazırlayan küresel bir topluluk.
               İnovasyonu bir zihniyet hâline getiriyoruz.

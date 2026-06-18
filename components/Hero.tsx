@@ -1,6 +1,5 @@
 import Star from "./Star";
 import Rings from "./Rings";
-import Logo from "./Logo";
 import Counter from "./Counter";
 
 export default function Hero() {
@@ -60,19 +59,25 @@ export default function Hero() {
             <div className="absolute inset-0 rotate-3 rounded-[2rem] bg-gradient-to-br from-leaf-400 via-grape-500 to-orange-500 bg-[length:200%_200%] shadow-glow animate-gradient" />
             <div className="absolute inset-0 -rotate-2 rounded-[2rem] border border-white/60 bg-white/60 backdrop-blur-sm" />
             <div className="absolute inset-0 flex flex-col justify-between overflow-hidden rounded-[2rem] bg-ink-900 p-8 text-white shadow-soft">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://plus.unsplash.com/premium_photo-1753346511221-8d61539305de?w=1200&q=70&auto=format&fit=crop"
+                alt="Birlikte proje geliştiren öğrenciler"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/75 to-ink-900/25" />
               <Rings className="absolute -right-12 -top-12 h-56 w-56 text-white/15 animate-spin-slow" />
               <Star className="absolute bottom-28 left-8 text-leaf-300/80 animate-twinkle" size={20} />
               <div className="relative flex items-center justify-between">
-                <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-leaf-300">
+                <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-leaf-300 backdrop-blur">
                   Vizyon
                 </span>
-                <Logo variant="light" showText={false} className="opacity-90" />
               </div>
               <div className="relative">
-                <p className="text-2xl font-bold leading-snug">
+                <p className="text-2xl font-bold leading-snug drop-shadow">
                   “İnovasyon bir yetenek değil, geliştirilebilen bir zihniyettir.”
                 </p>
-                <p className="mt-4 text-sm text-ink-200">
+                <p className="mt-4 text-sm text-ink-100">
                   Geleceğin alanlarında küresel fırsatlar.
                 </p>
               </div>

@@ -48,7 +48,7 @@ export default function Navbar() {
     >
       <nav className="container-page flex h-20 items-center justify-between">
         <a href="#top" aria-label="Education for Innovation ana sayfa" className="transition-transform hover:scale-[1.03]">
-          <Logo />
+          <Logo className="h-12 w-auto" />
         </a>
 
         <div className="hidden items-center gap-7 lg:flex">
