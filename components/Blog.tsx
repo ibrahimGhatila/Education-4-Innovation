@@ -1,11 +1,10 @@
 import Reveal from "./Reveal";
 import Rings from "./Rings";
-import Star from "./Star";
 
 const posts = [
-  { category: "İnovasyon", title: "Yapay zekâ çağında öğrenciler hangi becerilere odaklanmalı?", readTime: "5 dk okuma", bg: "bg-grape-600" },
-  { category: "Üniversite", title: "Dünyanın önde gelen üniversitelerine kabul süreci nasıl planlanır?", readTime: "7 dk okuma", bg: "bg-berry-500" },
-  { category: "Kariyer", title: "Yaşam bilimleri: Geleceğin en hızlı büyüyen kariyer alanları", readTime: "4 dk okuma", bg: "bg-orange-500" },
+  { category: "İnovasyon", title: "Yapay zekâ çağında öğrenciler hangi becerilere odaklanmalı?", readTime: "5 dk okuma", bg: "bg-grape-600", image: "https://images.unsplash.com/photo-1541178735493-479c1a27ed24?w=900&q=70&auto=format&fit=crop" },
+  { category: "Üniversite", title: "Dünyanın önde gelen üniversitelerine kabul süreci nasıl planlanır?", readTime: "7 dk okuma", bg: "bg-berry-500", image: "https://images.unsplash.com/photo-1689686610856-3bcf921eb1f0?w=900&q=70&auto=format&fit=crop" },
+  { category: "Kariyer", title: "Yaşam bilimleri: Geleceğin en hızlı büyüyen kariyer alanları", readTime: "4 dk okuma", bg: "bg-orange-500", image: "https://images.unsplash.com/photo-1758206523826-a65d4cf070aa?w=900&q=70&auto=format&fit=crop" },
 ];
 
 export default function Blog() {
@@ -24,15 +23,23 @@ export default function Blog() {
           {posts.map((post, i) => (
             <Reveal key={post.title} delay={i * 110} from="up" className="h-full">
               <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-ink-100 bg-white shadow-soft transition-all duration-300 hover:-translate-y-2 hover:shadow-lift">
-                <div className={`relative flex aspect-[16/10] items-center justify-center overflow-hidden ${post.bg}`}>
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className={`absolute inset-0 opacity-25 mix-blend-multiply ${post.bg}`} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink-900/50 to-transparent" />
                   <Rings className="absolute -right-10 -top-10 h-40 w-40 text-white/25 transition-transform duration-700 group-hover:scale-110" />
-                  <Star className="text-white/90 transition-transform duration-500 group-hover:scale-125" size={40} />
+                  <span className="absolute left-4 top-4 inline-flex rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur">
+                    {post.category}
+                  </span>
                 </div>
                 <div className="flex flex-1 flex-col p-6">
-                  <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-wider text-grape-700">
-                    <span>{post.category}</span>
-                    <span className="text-ink-300">•</span>
-                    <span className="text-ink-400">{post.readTime}</span>
+                  <div className="text-xs font-semibold uppercase tracking-wider text-ink-400">
+                    {post.readTime}
                   </div>
                   <h3 className="mt-3 text-lg font-bold leading-snug text-ink-900 transition-colors group-hover:text-grape-700">
                     {post.title}

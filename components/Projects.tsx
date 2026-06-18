@@ -19,7 +19,7 @@ const projects: Project[] = [
     tag: "Etki Odaklı",
     description:
       "Öğrenci ve toplum odaklı, somut etki yaratan inovasyon projeleri yürütüyoruz. Fikir aşamasından uygulamaya kadar her adımda mentorluk ve kaynak sağlıyoruz.",
-    image: "/projects/projeler.svg",
+    image: "https://plus.unsplash.com/premium_photo-1663091226871-2878f62a524d?w=1400&q=70&auto=format&fit=crop",
     accent: "text-grape-600",
   },
   {
@@ -27,7 +27,7 @@ const projects: Project[] = [
     tag: "Toplum",
     description:
       "Eğitimde fırsat eşitliğini destekleyen sosyal sorumluluk girişimleriyle, farklı arka planlardan gelen öğrencilerin geleceğe eşit koşullarda hazırlanmasını sağlıyoruz.",
-    image: "/projects/sosyal-sorumluluk.svg",
+    image: "https://plus.unsplash.com/premium_photo-1661775317533-2163ba4dbc93?w=1400&q=70&auto=format&fit=crop",
     accent: "text-leaf-600",
   },
   {
@@ -35,7 +35,7 @@ const projects: Project[] = [
     tag: "Girişimcilik",
     description:
       "Fikirden şirkete uzanan yolda genç girişimcilere mentorluk, kuluçka ve yatırımcı ağı desteği sunuyoruz. İnovasyonu sürdürülebilir bir işe dönüştürüyoruz.",
-    image: "/projects/startup-projeleri.svg",
+    image: "https://plus.unsplash.com/premium_photo-1661398591460-269d2f8635cb?w=1400&q=70&auto=format&fit=crop",
     accent: "text-orange-600",
   },
   {
@@ -43,7 +43,7 @@ const projects: Project[] = [
     tag: "İş Birliği",
     description:
       "Etkinlik ve programlarımıza güç katan kurumsal iş birlikleriyle, daha fazla öğrenciye ulaşıyor ve geleceğin yeteneklerine yatırım yapan markalarla buluşuyoruz.",
-    image: "/projects/sponsorluk.svg",
+    image: "https://plus.unsplash.com/premium_photo-1661503423349-63ad7057bc22?w=1400&q=70&auto=format&fit=crop",
     accent: "text-berry-500",
   },
   {
@@ -51,7 +51,7 @@ const projects: Project[] = [
     tag: "Destek",
     description:
       "Yetenekli öğrencilerin önündeki finansal engelleri kaldıran burs olanaklarıyla, başarının maddi koşullardan bağımsız olmasını hedefliyoruz.",
-    image: "/projects/burslar.svg",
+    image: "https://plus.unsplash.com/premium_photo-1714397507054-b34acc119eb5?w=1400&q=70&auto=format&fit=crop",
     accent: "text-grape-700",
   },
 ];
