@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "aba-production-496119"
+  },
+  "targets": {
+    "aba-production-496119": {
+      "hosting": {
+        "education-4-innovation": [
+          "education-4-innovation"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

@@ -1,20 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { E4iContent } from "@/lib/cms/e4iContent";
 import Logo from "./Logo";
 
-const navLinks = [
-  { href: "#hakkimizda", label: "Hakkımızda" },
-  { href: "#etkinlikler", label: "Etkinliklerimiz" },
-  { href: "#projeler", label: "Projelerimiz" },
-  { href: "#lokasyonlar", label: "Lokasyonlar" },
-  { href: "#blog", label: "Blog" },
-];
+type NavbarProps = {
+  content: E4iContent["nav"];
+};
 
-export default function Navbar() {
+export default function Navbar({ content }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string>("");
+  const navLinks = content.links;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -38,7 +36,7 @@ export default function Navbar() {
     );
     sections.forEach((s) => io.observe(s));
     return () => io.disconnect();
-  }, []);
+  }, [navLinks]);
 
   return (
     <header
@@ -71,7 +69,7 @@ export default function Navbar() {
         </div>
 
         <div className="hidden lg:block">
-          <a href="#iletisim" className="btn-primary">İletişime Geç</a>
+          <a href={content.cta_href} className="btn-primary">{content.cta_label}</a>
         </div>
 
         <button
@@ -103,7 +101,7 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-            <a href="#iletisim" onClick={() => setOpen(false)} className="btn-primary mt-2">İletişime Geç</a>
+            <a href={content.cta_href} onClick={() => setOpen(false)} className="btn-primary mt-2">{content.cta_label}</a>
           </div>
         </div>
       )}

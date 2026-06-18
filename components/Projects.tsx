@@ -1,83 +1,38 @@
 "use client";
 
 import { useState } from "react";
+import type { E4iContent } from "@/lib/cms/e4iContent";
 import Reveal from "./Reveal";
 import Rings from "./Rings";
 import Star from "./Star";
 
-type Project = {
-  name: string;
-  tag: string;
-  description: string;
-  image: string;
-  accent: string; // text color for the eyebrow/number
+type ProjectsProps = {
+  content: E4iContent["projects"];
 };
 
-const projects: Project[] = [
-  {
-    name: "Projeler",
-    tag: "Etki Odaklı",
-    description:
-      "Öğrenci ve toplum odaklı, somut etki yaratan inovasyon projeleri yürütüyoruz. Fikir aşamasından uygulamaya kadar her adımda mentorluk ve kaynak sağlıyoruz.",
-    image: "https://plus.unsplash.com/premium_photo-1663091226871-2878f62a524d?w=1400&q=70&auto=format&fit=crop",
-    accent: "text-grape-600",
-  },
-  {
-    name: "Sosyal Sorumluluk",
-    tag: "Toplum",
-    description:
-      "Eğitimde fırsat eşitliğini destekleyen sosyal sorumluluk girişimleriyle, farklı arka planlardan gelen öğrencilerin geleceğe eşit koşullarda hazırlanmasını sağlıyoruz.",
-    image: "https://plus.unsplash.com/premium_photo-1661775317533-2163ba4dbc93?w=1400&q=70&auto=format&fit=crop",
-    accent: "text-leaf-600",
-  },
-  {
-    name: "Startup Projeleri",
-    tag: "Girişimcilik",
-    description:
-      "Fikirden şirkete uzanan yolda genç girişimcilere mentorluk, kuluçka ve yatırımcı ağı desteği sunuyoruz. İnovasyonu sürdürülebilir bir işe dönüştürüyoruz.",
-    image: "https://plus.unsplash.com/premium_photo-1661398591460-269d2f8635cb?w=1400&q=70&auto=format&fit=crop",
-    accent: "text-orange-600",
-  },
-  {
-    name: "Sponsorluk",
-    tag: "İş Birliği",
-    description:
-      "Etkinlik ve programlarımıza güç katan kurumsal iş birlikleriyle, daha fazla öğrenciye ulaşıyor ve geleceğin yeteneklerine yatırım yapan markalarla buluşuyoruz.",
-    image: "https://plus.unsplash.com/premium_photo-1661503423349-63ad7057bc22?w=1400&q=70&auto=format&fit=crop",
-    accent: "text-berry-500",
-  },
-  {
-    name: "Burslar",
-    tag: "Destek",
-    description:
-      "Yetenekli öğrencilerin önündeki finansal engelleri kaldıran burs olanaklarıyla, başarının maddi koşullardan bağımsız olmasını hedefliyoruz.",
-    image: "https://plus.unsplash.com/premium_photo-1714397507054-b34acc119eb5?w=1400&q=70&auto=format&fit=crop",
-    accent: "text-grape-700",
-  },
-];
-
-export default function Projects() {
+export default function Projects({ content }: ProjectsProps) {
   const [index, setIndex] = useState(0);
-  const project = projects[index];
+  const projects = content.items;
+  const project = projects[index] ?? projects[0];
   const total = projects.length;
 
   const go = (dir: number) => setIndex((i) => (i + dir + total) % total);
+
+  if (!project) return null;
 
   return (
     <section id="projeler" className="py-20 sm:py-28">
       <div className="container-page">
         <Reveal className="mx-auto max-w-3xl text-center">
-          <span className="eyebrow">Projelerimiz</span>
-          <h2 className="section-title mt-5">İz bırakan girişimler</h2>
+          <span className="eyebrow">{content.eyebrow}</span>
+          <h2 className="section-title mt-5">{content.title}</h2>
           <p className="mt-5 text-lg leading-relaxed text-ink-500">
-            Her projeyi yakından tanıyın: sosyal sorumluluktan startup desteğine,
-            burslardan sponsorluklara kadar geleceğe yatırım yapıyoruz.
+            {content.body}
           </p>
         </Reveal>
 
         <Reveal from="scale" className="mt-14">
           <div className="grid items-stretch gap-px overflow-hidden rounded-[1.75rem] border border-ink-100 bg-ink-100 shadow-lift lg:grid-cols-2">
-            {/* Text side */}
             <div className="flex flex-col justify-between bg-white p-8 sm:p-10">
               <div key={`t-${index}`} className="animate-fade-up">
                 <div className="flex items-center gap-3">
@@ -93,7 +48,6 @@ export default function Projects() {
                 <p className="mt-4 text-lg leading-relaxed text-ink-600">{project.description}</p>
               </div>
 
-              {/* Controls */}
               <div className="mt-10 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <button
@@ -135,7 +89,6 @@ export default function Projects() {
               </div>
             </div>
 
-            {/* Image side */}
             <div className="relative min-h-[18rem] overflow-hidden bg-ink-900 lg:min-h-[26rem]">
               <Rings className="pointer-events-none absolute -right-16 -top-16 z-10 h-56 w-56 text-white/20" />
               <Star className="absolute right-8 top-8 z-10 text-white/70 animate-twinkle" size={18} />

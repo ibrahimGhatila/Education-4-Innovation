@@ -1,24 +1,14 @@
+import type { E4iContent } from "@/lib/cms/e4iContent";
 import Reveal from "./Reveal";
 import Rings from "./Rings";
 import Star from "./Star";
 import Skyline from "./Skyline";
 
-const cities = [
-  "San Francisco",
-  "Boston",
-  "New York",
-  "Toronto",
-  "Londra",
-  "Dublin",
-  "Amsterdam",
-  "Berlin",
-  "Milano",
-  "Cenevre",
-  "Dubai",
-  "İstanbul",
-];
+type GlobalPresenceProps = {
+  content: E4iContent["presence"];
+};
 
-export default function GlobalPresence() {
+export default function GlobalPresence({ content }: GlobalPresenceProps) {
   return (
     <section id="lokasyonlar" className="relative overflow-hidden bg-ink-900 pt-12 text-white sm:pt-16">
       <div className="bg-mesh pointer-events-none absolute inset-0 opacity-40" />
@@ -28,20 +18,19 @@ export default function GlobalPresence() {
         <Reveal className="container-page mx-auto max-w-3xl text-center">
           <p className="inline-flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-leaf-400">
             <Star size={12} className="text-leaf-400" />
-            Küresel Ağ
+            {content.eyebrow}
           </p>
           <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-            Dünyanın dört bir yanında fırsatlar
+            {content.title}
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-ink-200">
-            İnovasyon ekosistemlerinin kalbinde yer alan şehirlerde öğrencilerimizi
-            küresel deneyimlerle buluşturuyoruz.
+            {content.body}
           </p>
         </Reveal>
 
         <Reveal className="container-page mt-8">
           <ul className="mx-auto grid max-w-5xl grid-cols-3 gap-x-6 gap-y-4 text-center sm:grid-cols-4 lg:grid-cols-6">
-            {cities.map((city) => (
+            {content.cities.map((city) => (
               <li
                 key={city}
                 className="flex items-center justify-center gap-1.5 text-base font-medium text-white/90 transition-colors hover:text-leaf-300"
@@ -53,7 +42,6 @@ export default function GlobalPresence() {
           </ul>
         </Reveal>
 
-        {/* City skyline silhouette at the bottom of the section */}
         <div className="mt-10">
           <Skyline className="block h-auto w-full text-white" />
         </div>

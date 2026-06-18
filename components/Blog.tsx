@@ -1,26 +1,25 @@
+import type { E4iContent } from "@/lib/cms/e4iContent";
 import Reveal from "./Reveal";
 import Rings from "./Rings";
 
-const posts = [
-  { category: "İnovasyon", title: "Yapay zekâ çağında öğrenciler hangi becerilere odaklanmalı?", readTime: "5 dk okuma", bg: "bg-grape-600", image: "https://images.unsplash.com/photo-1541178735493-479c1a27ed24?w=900&q=70&auto=format&fit=crop" },
-  { category: "Üniversite", title: "Dünyanın önde gelen üniversitelerine kabul süreci nasıl planlanır?", readTime: "7 dk okuma", bg: "bg-berry-500", image: "https://images.unsplash.com/photo-1689686610856-3bcf921eb1f0?w=900&q=70&auto=format&fit=crop" },
-  { category: "Kariyer", title: "Yaşam bilimleri: Geleceğin en hızlı büyüyen kariyer alanları", readTime: "4 dk okuma", bg: "bg-orange-500", image: "https://images.unsplash.com/photo-1758206523826-a65d4cf070aa?w=900&q=70&auto=format&fit=crop" },
-];
+type BlogProps = {
+  content: E4iContent["blog"];
+};
 
-export default function Blog() {
+export default function Blog({ content }: BlogProps) {
   return (
     <section id="blog" className="bg-ink-50 py-20 sm:py-28">
       <div className="container-page">
         <Reveal className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-2xl">
-            <span className="eyebrow">Blog</span>
-            <h2 className="section-title mt-5">Güncel içgörüler ve rehberler</h2>
+            <span className="eyebrow">{content.eyebrow}</span>
+            <h2 className="section-title mt-5">{content.title}</h2>
           </div>
-          <a href="#blog" className="btn-ghost shrink-0">Tüm yazılar</a>
+          <a href={content.cta_href} className="btn-ghost shrink-0">{content.cta_label}</a>
         </Reveal>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {posts.map((post, i) => (
+          {content.posts.map((post, i) => (
             <Reveal key={post.title} delay={i * 110} from="up" className="h-full">
               <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-ink-100 bg-white shadow-soft transition-all duration-300 hover:-translate-y-2 hover:shadow-lift">
                 <div className="relative aspect-[16/10] overflow-hidden">

@@ -1,7 +1,12 @@
+import type { E4iContent } from "@/lib/cms/e4iContent";
 import Reveal from "./Reveal";
 import Rings from "./Rings";
 
-export default function Contact() {
+type ContactProps = {
+  content: E4iContent["contact"];
+};
+
+export default function Contact({ content }: ContactProps) {
   return (
     <section id="iletisim" className="py-20 sm:py-28">
       <Reveal className="container-page" from="scale">
@@ -12,17 +17,16 @@ export default function Contact() {
           <div className="relative grid gap-10 lg:grid-cols-2 lg:items-center">
             <div>
               <h2 className="text-3xl font-black leading-tight sm:text-4xl">
-                Geleceğini birlikte şekillendirelim
+                {content.title}
               </h2>
               <p className="mt-4 max-w-md text-lg text-white/90">
-                Öğrenci, veli veya kurum olarak bize ulaşın; size en uygun
-                programları ve fırsatları birlikte keşfedelim.
+                {content.body}
               </p>
               <a
-                href="mailto:info@educationforinnovation.org"
+                href={content.button_href}
                 className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-grape-700 transition-transform hover:-translate-y-0.5"
               >
-                E-posta gönder
+                {content.button_label}
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -30,10 +34,9 @@ export default function Contact() {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              <ContactCard label="Adres" value="Zorlu Center, Teras Evler TE 210, Beşiktaş / İstanbul" href="https://g.co/kgs/WmquifY" />
-              <ContactCard label="Telefon" value="+90 (539) 859 78 66" href="tel:+905398597866" />
-              <ContactCard label="E-posta" value="info@educationforinnovation.org" href="mailto:info@educationforinnovation.org" />
-              <ContactCard label="Instagram" value="@e4i_vakfi" href="https://www.instagram.com/e4i_vakfi/" />
+              {content.cards.map((card) => (
+                <ContactCard key={`${card.label}-${card.href}`} label={card.label} value={card.value} href={card.href} />
+              ))}
             </div>
           </div>
         </div>

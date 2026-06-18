@@ -1,25 +1,15 @@
+import type { E4iContent } from "@/lib/cms/e4iContent";
 import Logo from "./Logo";
 import Rings from "./Rings";
 import Star from "./Star";
 
-const socials = [
-  { name: "Instagram", url: "https://www.instagram.com/e4i_vakfi/" },
-  { name: "Facebook", url: "https://www.facebook.com/E4Ivakif/" },
-  { name: "YouTube", url: "https://www.youtube.com/@InovasyonicinEgitimVakf" },
-  { name: "X", url: "https://x.com/e4i_vakfi" },
-  { name: "LinkedIn", url: "https://www.linkedin.com/company/e4i/" },
-];
+type FooterProps = {
+  content: E4iContent["footer"];
+};
 
-const footerLinks = [
-  { href: "#hakkimizda", label: "Hakkımızda" },
-  { href: "#etkinlikler", label: "Etkinliklerimiz" },
-  { href: "#projeler", label: "Projelerimiz" },
-  { href: "#lokasyonlar", label: "Lokasyonlar" },
-  { href: "#blog", label: "Blog" },
-  { href: "#iletisim", label: "İletişim" },
-];
+export default function Footer({ content }: FooterProps) {
+  const year = new Date().getFullYear();
 
-export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-gradient-to-br from-grape-700 via-berry-600 to-orange-500 bg-[length:200%_200%] text-white animate-gradient">
       <div className="bg-mesh pointer-events-none absolute inset-0 opacity-20" />
@@ -33,14 +23,13 @@ export default function Footer() {
           <div>
             <Logo chip />
             <p className="mt-6 max-w-sm text-lg font-medium leading-relaxed text-white/90">
-              Öğrencileri ve aileleri geleceğe hazırlayan küresel bir topluluk.
-              İnovasyonu bir zihniyet hâline getiriyoruz.
+              {content.body}
             </p>
             <a
-              href="#iletisim"
+              href={content.cta_href}
               className="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-grape-700 transition-transform hover:-translate-y-0.5"
             >
-              Bize katıl
+              {content.cta_label}
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -48,9 +37,9 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-bold uppercase tracking-wider text-white/70">Keşfet</h3>
+            <h3 className="text-sm font-bold uppercase tracking-wider text-white/70">{content.links_title}</h3>
             <ul className="mt-5 space-y-3">
-              {footerLinks.map((link) => (
+              {content.links.map((link) => (
                 <li key={link.href}>
                   <a href={link.href} className="font-medium text-white/90 transition-colors hover:text-white">
                     {link.label}
@@ -61,20 +50,20 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-bold uppercase tracking-wider text-white/70">İletişim</h3>
+            <h3 className="text-sm font-bold uppercase tracking-wider text-white/70">{content.contact_title}</h3>
             <ul className="mt-5 space-y-3 text-white/90">
-              <li>Zorlu Center, Teras Evler TE 210, Beşiktaş / İstanbul</li>
+              <li>{content.address}</li>
               <li>
-                <a href="tel:+905398597866" className="transition-colors hover:text-white">+90 (539) 859 78 66</a>
+                <a href={content.phone_href} className="transition-colors hover:text-white">{content.phone}</a>
               </li>
               <li>
-                <a href="mailto:info@educationforinnovation.org" className="transition-colors hover:text-white">
-                  info@educationforinnovation.org
+                <a href={content.email_href} className="transition-colors hover:text-white">
+                  {content.email}
                 </a>
               </li>
             </ul>
             <div className="mt-6 flex flex-wrap gap-2.5">
-              {socials.map((social) => (
+              {content.socials.map((social) => (
                 <a
                   key={social.name}
                   href={social.url}
@@ -90,8 +79,8 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/20 pt-8 text-sm text-white/80 sm:flex-row">
-          <p>© {new Date().getFullYear()} Education for Innovation. Tüm hakları saklıdır.</p>
-          <p>İnovasyon için Eğitim Vakfı</p>
+          <p>{content.copyright.replace("{year}", String(year))}</p>
+          <p>{content.bottom_text}</p>
         </div>
       </div>
     </footer>

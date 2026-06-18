@@ -1,8 +1,13 @@
+import type { E4iContent } from "@/lib/cms/e4iContent";
 import Star from "./Star";
 import Rings from "./Rings";
 import Counter from "./Counter";
 
-export default function Hero() {
+type HeroProps = {
+  content: E4iContent["hero"];
+};
+
+export default function Hero({ content }: HeroProps) {
   return (
     <section id="top" className="relative overflow-hidden bg-mesh pt-32 pb-20 sm:pt-40 sm:pb-28">
       <Rings className="pointer-events-none absolute -left-24 top-16 h-80 w-80 text-grape-300/50 animate-spin-slow" />
@@ -15,34 +20,29 @@ export default function Hero() {
         <div className="animate-fade-up">
           <span className="eyebrow">
             <Star size={12} className="text-orange-500" />
-            İnovasyon için Eğitim Vakfı
+            {content.eyebrow}
           </span>
           <h1 className="mt-6 text-4xl font-black leading-[1.08] tracking-tight text-ink-900 sm:text-5xl lg:text-6xl">
-            Geleceğin liderlerini{" "}
-            <span className="text-gradient-anim">bugünden</span> yetiştiriyoruz
+            {content.title_prefix}{" "}
+            <span className="text-gradient-anim">{content.title_highlight}</span>{" "}
+            {content.title_suffix}
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-500">
-            E4I; öğrencileri ve aileleri geleceğe yönelik kariyer planlaması, dünyanın
-            önde gelen üniversitelerine kabul ve inovasyon zihniyeti konusunda
-            destekler. Yapay zekâdan yaşam bilimlerine, geleceğin alanlarına hazırlar.
+            {content.body}
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a href="#iletisim" className="btn-primary group">
-              Yolculuğa Başla
+            <a href={content.primary_href} className="btn-primary group">
+              {content.primary_label}
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="transition-transform group-hover:translate-x-1">
                 <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
-            <a href="#etkinlikler" className="btn-ghost">Programları Keşfet</a>
+            <a href={content.secondary_href} className="btn-ghost">{content.secondary_label}</a>
           </div>
 
           <dl className="mt-12 grid max-w-lg grid-cols-3 gap-6">
-            {[
-              { to: 12, suffix: "+", label: "Küresel lokasyon", color: "text-orange-500" },
-              { to: 5, suffix: "+", label: "Stratejik iş ortağı", color: "text-grape-600" },
-              { to: 1000, suffix: "+", label: "Desteklenen öğrenci", color: "text-leaf-600" },
-            ].map((stat) => (
+            {content.stats.map((stat) => (
               <div key={stat.label}>
                 <dt className={`text-3xl font-black sm:text-4xl ${stat.color}`}>
                   <Counter to={stat.to} suffix={stat.suffix} />
@@ -53,7 +53,6 @@ export default function Hero() {
           </dl>
         </div>
 
-        {/* Hero showcase card */}
         <div className="relative animate-fade-up [animation-delay:140ms]">
           <div className="relative mx-auto aspect-[4/5] w-full max-w-md">
             <div className="absolute inset-0 rotate-3 rounded-[2rem] bg-gradient-to-br from-leaf-400 via-grape-500 to-orange-500 bg-[length:200%_200%] shadow-glow animate-gradient" />
@@ -61,8 +60,8 @@ export default function Hero() {
             <div className="absolute inset-0 flex flex-col justify-between overflow-hidden rounded-[2rem] bg-ink-900 p-8 text-white shadow-soft">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="https://plus.unsplash.com/premium_photo-1753346511221-8d61539305de?w=1200&q=70&auto=format&fit=crop"
-                alt="Birlikte proje geliştiren öğrenciler"
+                src={content.image}
+                alt={content.image_alt}
                 className="absolute inset-0 h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/75 to-ink-900/25" />
@@ -70,15 +69,15 @@ export default function Hero() {
               <Star className="absolute bottom-28 left-8 text-leaf-300/80 animate-twinkle" size={20} />
               <div className="relative flex items-center justify-between">
                 <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-leaf-300 backdrop-blur">
-                  Vizyon
+                  {content.image_badge}
                 </span>
               </div>
               <div className="relative">
                 <p className="text-2xl font-bold leading-snug drop-shadow">
-                  “İnovasyon bir yetenek değil, geliştirilebilen bir zihniyettir.”
+                  {content.quote}
                 </p>
                 <p className="mt-4 text-sm text-ink-100">
-                  Geleceğin alanlarında küresel fırsatlar.
+                  {content.quote_caption}
                 </p>
               </div>
             </div>
